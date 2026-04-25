@@ -1,0 +1,40 @@
+plugins {
+    id 'application'
+}
+
+group = 'io.github.jebai'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+def useLocal = project.hasProperty('useLocal')
+def localLibraryPath = project.findProperty('localLibraryPath') ?: '../security-tools/build/libs'
+
+repositories {
+    if (useLocal) {
+        flatDir {
+            dirs localLibraryPath
+        }
+    } else {
+        mavenCentral()
+    }
+}
+
+dependencies {
+    if (useLocal) {
+        implementation name: 'security-tools-1.0.0'
+    } else {
+        implementation 'io.github.jebai:security-tools:1.0.0'
+    }
+}
+
+application {
+    mainClass = 'App'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
