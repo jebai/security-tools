@@ -19,7 +19,16 @@ repositories {
             dirs localLibraryPath
         }
     } else {
-        mavenCentral()
+        // mavenCentral()
+        maven {
+            name = 'Central Portal Snapshots'
+            url = 'https://central.sonatype.com/repository/maven-snapshots/'
+
+            // Only search this repository for the specific dependency
+            content {
+                includeModule('io.github.jebai', 'security-tools')
+            }
+        }
     }
 }
 
@@ -27,7 +36,7 @@ dependencies {
     if (useLocal) {
         implementation name: 'security-tools-1.0.0'
     } else {
-        implementation 'io.github.jebai:security-tools:1.0.0'
+        implementation 'io.github.jebai:security-tools:1.0.2-SNAPSHOT'
     }
 }
 

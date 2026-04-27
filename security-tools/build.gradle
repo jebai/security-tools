@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'io.github.jebai'
-version = '1.0.0'
+version = '1.0.3-SNAPSHOT'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
@@ -54,7 +54,16 @@ publishing {
     repositories {
         maven {
             name = 'MavenCentral'
-            url = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
+            url = version.endsWith('-SNAPSHOT')
+                ? 'https://central.sonatype.com/repository/maven-snapshots/'
+                : 'https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/'
+            credentials {
+                // username = project.findProperty('ossrhUsername')
+                // password = project.findProperty('ossrhPassword')
+                
+                username = 'MUwB6Y'
+                password = 'IyOxp4h9RsvlXdd17zJYbmHxYNrpgA4nm'
+            }
         }
     }
 }
