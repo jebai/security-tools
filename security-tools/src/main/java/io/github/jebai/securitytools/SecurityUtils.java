@@ -9,6 +9,6 @@ public class SecurityUtils {
      * @return the version string
      */
     public static String getVersion() {
-        return "1.0.3";
+        return "1.0.4";
     }
 }

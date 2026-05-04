@@ -30,7 +30,7 @@ publish-test/
 ### Maven Coordinates
 - **Group ID**: `io.github.jebai`
 - **Artifact ID**: `security-tools`
-- **Version**: `1.0.0`
+- **Version**: `1.0.3`
 
 ### API
 
@@ -39,7 +39,7 @@ package io.github.jebai.securitytools;
 
 public class SecurityUtils {
     public static String getVersion() {
-        return "1.0.0";
+        return "1.0.3";
     }
 }
 ```
@@ -89,6 +89,7 @@ cd security-tools-app
 - Sonatype OSSRH account
 - GPG key for signing artifacts
 - `gradle.properties` file with publishing credentials
+- This project uses the [gradle-maven-publish-plugin](https://github.com/vanniktech/gradle-maven-publish-plugin) for simplified Maven Central publishing
 
 ### Publishing Steps
 

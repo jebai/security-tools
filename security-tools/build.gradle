@@ -1,75 +1,45 @@
 plugins {
     id 'java-library'
-    id 'maven-publish'
-    id 'signing'
+    id 'com.vanniktech.maven.publish' version '0.36.0'
 }
 
 group = 'io.github.jebai'
-version = '1.0.3-SNAPSHOT'
+version = '1.0.4'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
-
-    withJavadocJar()
-    withSourcesJar()
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
+mavenPublishing {
+    coordinates("io.github.jebai", "security-tools", "1.0.4")
 
-            artifactId = 'security-tools'
+    pom {
+        name = 'security-tools'
+        description = 'A security tools library'
+        url = 'https://github.com/jebai/security-tools'
 
-            pom {
-                name = 'security-tools'
-                description = 'A security tools library'
-                url = 'https://github.com/jebai/security-tools'
-
-                licenses {
-                    license {
-                        name = 'MIT License'
-                        url = 'https://opensource.org/licenses/MIT'
-                    }
-                }
-
-                developers {
-                    developer {
-                        id = 'jebai'
-                        name = 'jebai'
-                        email = 'jebai@example.com'
-                    }
-                }
-
-                scm {
-                    connection = 'scm:git@github.com:jebai/security-tools.git'
-                    developerConnection = 'scm:git@github.com:jebai/security-tools.git'
-                    url = 'https://github.com/jebai/security-tools'
-                }
+        licenses {
+            license {
+                name = 'MIT License'
+                url = 'https://opensource.org/licenses/MIT'
             }
         }
-    }
 
-    repositories {
-        maven {
-            name = 'MavenCentral'
-            url = version.endsWith('-SNAPSHOT')
-                ? 'https://central.sonatype.com/repository/maven-snapshots/'
-                : 'https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/'
-            credentials {
-                // username = project.findProperty('ossrhUsername')
-                // password = project.findProperty('ossrhPassword')
-                
-                username = 'MUwB6Y'
-                password = 'IyOxp4h9RsvlXdd17zJYbmHxYNrpgA4nm'
+        developers {
+            developer {
+                id = 'jebai'
+                name = 'jebai'
+                email = 'jebai@example.com'
             }
         }
-    }
-}
 
-signing {
-    sign publishing.publications.mavenJava
+        scm {
+            connection = 'scm:git@github.com:jebai/security-tools.git'
+            developerConnection = 'scm:git@github.com:jebai/security-tools.git'
+            url = 'https://github.com/jebai/security-tools'
+        }
+    }
 }
 
 tasks.withType(JavaCompile) {
