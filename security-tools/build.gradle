@@ -1,10 +1,11 @@
 plugins {
     id 'java-library'
-    id 'com.vanniktech.maven.publish' version '0.36.0'
+    id 'com.vanniktech.maven.publish'
 }
 
 group = 'io.github.jebai'
-version = '1.0.4'
+def artifactId = 'security-tools'
+version = '1.0.5'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
@@ -12,10 +13,10 @@ java {
 }
 
 mavenPublishing {
-    coordinates("io.github.jebai", "security-tools", "1.0.4")
+    coordinates(group, artifactId, version)
 
     pom {
-        name = 'security-tools'
+        name = artifactId
         description = 'A security tools library'
         url = 'https://github.com/jebai/security-tools'
 
@@ -30,7 +31,7 @@ mavenPublishing {
             developer {
                 id = 'jebai'
                 name = 'jebai'
-                email = 'jebai@example.com'
+                email = 'jebai@qq.com'
             }
         }
 
