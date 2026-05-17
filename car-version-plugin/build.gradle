@@ -23,7 +23,7 @@ gradlePlugin {
 }
 
 mavenPublishing {
-    publishToMavenCentral()
+    // publishToMavenCentral()
     signAllPublications()
     coordinates(group, artifactId, version)
     pom {
@@ -49,6 +49,19 @@ mavenPublishing {
             url = "https://github.com/jebai/car-version-plugin/"
             connection = "scm:git:git://github.com/jebai/car-version-plugin.git"
             developerConnection = "scm:git:ssh://git@github.com/jebai/car-version-plugin.git"
+        }
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "aliyun"
+            url = 'https://packages.aliyun.com/683c44e7d27b6b3c0e1994d1/maven/repo-ogfkg'
+            credentials {
+                username = '683c44c71395375227da874a'
+                password = 'aJC]THlj8H7C'
+            }
         }
     }
 }
