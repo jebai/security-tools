@@ -1,1 +1,14 @@
+pluginManagement {
+    repositories {
+        maven {
+            credentials {
+                username '683c44c71395375227da874a'
+                password 'aJC]THlj8H7C'
+            }
+            url 'https://packages.aliyun.com/683c44e7d27b6b3c0e1994d1/maven/repo-ogfkg'
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
 rootProject.name = 'security-tools-app'
