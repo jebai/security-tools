@@ -1,0 +1,58 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'com.vanniktech.maven.publish'
+}
+
+group = 'io.github.jebai'
+def artifactId = 'car-version-plugin'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+
+gradlePlugin {
+    plugins {
+        create('versionPlugin') {
+            id = 'com.skyworth.car.version'
+            implementationClass = 'com.skyworth.car.version.CarVersionPlugin'
+        }
+    }
+}
+
+mavenPublishing {
+    publishToMavenCentral()
+    signAllPublications()
+    coordinates(group, artifactId, version)
+    pom {
+        name = artifactId
+        description = "A car version plugin"
+        inceptionYear = "2020"
+        url = "https://github.com/jebai/car-version-plugin"
+        licenses {
+            license {
+                name = "MIT License"
+                url = "https://opensource.org/licenses/MIT"
+                distribution = "repo"
+            }
+        }
+        developers {
+            developer {
+                id = "jebai"
+                name = "Jebai"
+                url = "https://github.com/jebai/"
+            }
+        }
+        scm {
+            url = "https://github.com/jebai/car-version-plugin/"
+            connection = "scm:git:git://github.com/jebai/car-version-plugin.git"
+            developerConnection = "scm:git:ssh://git@github.com/jebai/car-version-plugin.git"
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}

@@ -1,0 +1,4 @@
+关于插件发布
+gradle.plugin 除了插件包本身外，还有一个pluginmarker包，用于plugins语句的解析
+
+但是pluginmarker包的groupId跟插件包本的groupId不同，而是根据pluginId的拼接的，所以发布到sonatype时，所以导致无法发布到sonatype，这里可以考虑发布到私有仓库
